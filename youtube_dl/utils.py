@@ -9,7 +9,7 @@ import calendar
 import codecs
 import collections
 import contextlib
-import ctypes
+# import ctypes
 import datetime
 import email.utils
 import email.header
@@ -3775,22 +3775,22 @@ def setproctitle(title):
     if sys.platform.startswith('java'):
         return
 
-    try:
-        libc = ctypes.cdll.LoadLibrary('libc.so.6')
-    except OSError:
-        return
-    except TypeError:
-        # LoadLibrary in Windows Python 2.7.13 only expects
-        # a bytestring, but since unicode_literals turns
-        # every string into a unicode string, it fails.
-        return
-    title_bytes = title.encode('utf-8')
-    buf = ctypes.create_string_buffer(len(title_bytes))
-    buf.value = title_bytes
-    try:
-        libc.prctl(15, buf, 0, 0, 0)
-    except AttributeError:
-        return  # Strange libc, just skip this
+    # try:
+    #     libc = ctypes.cdll.LoadLibrary('libc.so.6')
+    # except OSError:
+    #     return
+    # except TypeError:
+    #     # LoadLibrary in Windows Python 2.7.13 only expects
+    #     # a bytestring, but since unicode_literals turns
+    #     # every string into a unicode string, it fails.
+    #     return
+    # title_bytes = title.encode('utf-8')
+    # buf = ctypes.create_string_buffer(len(title_bytes))
+    # buf.value = title_bytes
+    # try:
+    #     libc.prctl(15, buf, 0, 0, 0)
+    # except AttributeError:
+    #     return  # Strange libc, just skip this
 
 
 def remove_start(s, start):

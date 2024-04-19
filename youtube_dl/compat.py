@@ -5,7 +5,7 @@ from __future__ import division
 import base64
 import binascii
 import collections
-import ctypes
+# import ctypes
 import datetime
 import email
 import getpass
@@ -3219,7 +3219,7 @@ if platform.python_implementation() == 'PyPy' and sys.pypy_version_info < (5, 4,
         return resf
 else:
     def compat_ctypes_WINFUNCTYPE(*args, **kwargs):
-        return ctypes.WINFUNCTYPE(*args, **kwargs)
+        return
 
 
 if sys.version_info < (3, 0):
